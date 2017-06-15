@@ -1,24 +1,26 @@
 import React from 'react';
-var axios = require('axios')
 
-class Product extends React.Component {
-  state = {}
+const Product = ({ product }) => {
+  console.log(product.data);
 
-  componentDidMount() {
-    axios.get('http://challenge.eliteworks.com/product?api_key=spencerrichards34_5xs@indeedemail.com')
-      .then(resp => {
-        this.setState(resp)
-      })
-      debugger;
-  }
-
-  render() {
+  if(!product.data) {
     return(
-      <div>
-        Product is working!
-      </div>
-    );
+      <div>Loading</div>
+    )
   }
+  let { name, description, data: { imageUrl, food, animal} } = product
+
+  return(
+    <div>
+      <div>
+        <h1>{ name }</h1>
+        <h1>{ description }</h1>
+        <img src={imageUrl} width='300' />
+        <h1>{ food }</h1>
+        <h1>{ animal }</h1>
+      </div>
+    </div>
+  );
 }
 
 export default Product;
