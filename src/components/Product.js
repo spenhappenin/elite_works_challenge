@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, Icon, Image } from 'semantic-ui-react'
 
 const Product = ({ product }) => {  
   if(!product.data) {
@@ -10,35 +11,29 @@ const Product = ({ product }) => {
   let { name, description, data: { imageUrl, food, animal} } = product
   return(
     <div className='container'>
-      <div className="card-container">
-
-        <div className='card-column'>
-          <img src={imageUrl} width='350' alt='Product' />
-        </div>
-
-        <div className='card-column'>
-          <div className='product-title'>
-            <div className='card-content'>
-              <h2>{ name }</h2>
-            </div>
-            <div className='card content'>
-              <p>{ description }</p>
-            </div>
-            <hr />
-          </div>
-
-          <div className='product-favorites'>
-            <div className='card-content'>
-              <h5>Favorite Food: </h5> 
-              <p>{ food }</p>
-            </div>
-            <div className='card-content'>
-              <h5>Favorite Animal: </h5>
-              <p>{ animal }</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Card>
+        <Image src={imageUrl} />
+        <Card.Content>
+          <Card.Header>
+            { name }
+          </Card.Header>
+          <Card.Description>
+            { description }
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <a>
+            <Icon name='user' />
+            Food: { food }
+          </a>
+        </Card.Content>
+        <Card.Content extra>
+          <a>
+            <Icon name='user' />
+            Animal: { animal }
+          </a>
+        </Card.Content>
+      </Card>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Product from './components/Product';
 import $ from "jquery";
+import { Button, Form, Container } from 'semantic-ui-react';
 
 class App extends Component {
   constructor(props) {
@@ -58,7 +59,10 @@ class App extends Component {
       <div className="App">
         <div className="App-intro">
           <Product product={this.state.product} />
-          <button onClick={ this.toggleEdit }>Edit</button>
+          <br />
+          <div>
+            <Button inverted color='blue' onClick={ this.toggleEdit }>Edit Product</Button>
+          </div>
         </div>
       </div>
     );
@@ -66,22 +70,35 @@ class App extends Component {
 
   edit() {
     return(
-      <div className="App">
-        <p className="App-intro">
-          <input type='text' ref='editName' defaultValue={ this.state.product.name } placeholder='Name' />
-          <br />
-          <input type='text' ref='editDescription' defaultValue={ this.state.product.description } placeholder='Description' />
-          <br />
-          <input type='text' ref='editImageUrl' defaultValue={ this.state.product.data.imageUrl } placeholder='Image URL' />
-          <br />
-          <input type='text' ref='editFood' defaultValue={ this.state.product.data.food } placeholder='Food' />
-          <br />          
-          <input type='text' ref='editAnimal' defaultValue={ this.state.product.data.animal } placeholder='Animal' />
-          <br />          
-          <button onClick={ this.toggleEdit }>Cancel</button>
-          <br />
-          <button onClick={ this.handleEdit }>Edit</button>
-        </p>
+      <div>
+        <div>
+          <Container>
+            <Form onSubmit={ this.handleEdit }>
+              <Form.Field>
+                <label>Name</label>
+                <input type='text' ref='editName' defaultValue={ this.state.product.name } placeholder='Name' />
+              </Form.Field>
+              <Form.Field>
+                <label>Description</label>
+                <input type='text' ref='editDescription' defaultValue={ this.state.product.description } placeholder='Description' />
+              </Form.Field>
+              <Form.Field>
+                <label>Image URL</label>
+                <input type='text' ref='editImageUrl' defaultValue={ this.state.product.data.imageUrl } placeholder='Image URL' />
+              </Form.Field>
+              <Form.Field>
+                <label>Food</label>
+                <input type='text' ref='editFood' defaultValue={ this.state.product.data.food } placeholder='Food' />
+              </Form.Field>
+              <Form.Field>
+                <label>Animal</label>
+                <input type='text' ref='editAnimal' defaultValue={ this.state.product.data.animal } placeholder='Animal' />
+              </Form.Field>            
+              <Button type='submit' inverted color='green' onClick={ this.handleEdit }>Submit</Button>
+              <Button onClick={ this.toggleEdit } inverted color='red'>Cancel</Button>
+            </Form> 
+          </Container> 
+        </div>
       </div>
     );
   }
