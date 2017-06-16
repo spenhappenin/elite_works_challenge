@@ -46,10 +46,12 @@ class App extends Component {
       dataType: "JSON",
       data: { name, description, data: data }
     }).done( data => {
+      debugger;
       console.log("Success!");
       this.setState({ product: {name: name, description: description, data: {imageUrl: imageUrl, food: food, animal: animal} }})
       this.toggleEdit();
     }).fail( err => {
+      debugger;
       console.log(err);
     });
   }
@@ -72,7 +74,7 @@ class App extends Component {
     return(
       <div>
         <div>
-          <Container>
+					<Container>
             <Form onSubmit={ this.handleEdit }>
               <Form.Field>
                 <label>Name</label>
@@ -94,7 +96,7 @@ class App extends Component {
                 <label>Animal</label>
                 <input type='text' ref='editAnimal' defaultValue={ this.state.product.data.animal } placeholder='Animal' />
               </Form.Field>            
-              <Button type='submit' inverted color='green' onClick={ this.handleEdit }>Submit</Button>
+              <Button type='submit' inverted color='green'>Submit</Button>
               <Button onClick={ this.toggleEdit } inverted color='red'>Cancel</Button>
             </Form> 
           </Container> 
