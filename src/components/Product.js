@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Image } from 'semantic-ui-react'
 
 const Product = ({ product }) => {  
   if(!product.data) {
@@ -22,16 +22,10 @@ const Product = ({ product }) => {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <a>
-            <Icon name='user' />
-            Food: { food }
-          </a>
+          <a>Food: { food }</a>
         </Card.Content>
         <Card.Content extra>
-          <a>
-            <Icon name='user' />
-            Animal: { animal }
-          </a>
+          <a>Animal: { animal }</a>
         </Card.Content>
       </Card>
     </div>
